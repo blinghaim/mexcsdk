@@ -1,4 +1,4 @@
-module demo
+module github.com/blinghaim/mexcsdk
 
 go 1.18
 
