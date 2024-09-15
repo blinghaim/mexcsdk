@@ -10,6 +10,7 @@ import (
 	"github.com/go-resty/resty/v2"
 	"log"
 	"net/url"
+	"os"
 	"strings"
 	"time"
 )
@@ -26,6 +27,7 @@ func PublicGet(urlStr string, jsonParams string) interface{} {
 	}
 	//创建请求
 	client := resty.New()
+	client.SetProxy(os.Getenv("HTTPS_PROXY"))
 	//发送请求
 	resp, err := client.R().Get(path)
 
@@ -60,6 +62,7 @@ func PrivateGet(urlStr string, jsonParams string) interface{} {
 	}
 	//创建请求
 	client := resty.New()
+	client.SetProxy(os.Getenv("HTTPS_PROXY"))
 	//发送请求
 	resp, err := client.R().SetHeaders(map[string]string{
 		"X-MEXC-APIKEY": config.API_KEY,
@@ -97,6 +100,7 @@ func PrivatePost(urlStr string, jsonParams string) interface{} {
 	}
 	//创建请求
 	client := resty.New()
+	client.SetProxy(os.Getenv("HTTPS_PROXY"))
 	//发送请求
 	resp, err := client.R().SetHeaders(map[string]string{
 		"X-MEXC-APIKEY": config.API_KEY,
@@ -134,6 +138,7 @@ func PrivateDelete(urlStr string, jsonParams string) interface{} {
 	}
 	//创建请求
 	client := resty.New()
+	client.SetProxy(os.Getenv("HTTPS_PROXY"))
 	//发送请求
 	resp, err := client.R().SetHeaders(map[string]string{
 		"X-MEXC-APIKEY": config.API_KEY,
@@ -171,6 +176,7 @@ func PrivatePut(urlStr string, jsonParams string) interface{} {
 	}
 	//创建请求
 	client := resty.New()
+	client.SetProxy(os.Getenv("HTTPS_PROXY"))
 	//发送请求
 	resp, err := client.R().SetHeaders(map[string]string{
 		"X-MEXC-APIKEY": config.API_KEY,
