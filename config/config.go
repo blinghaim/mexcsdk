@@ -5,3 +5,8 @@ var (
 	SEC_KEY  string = "secret key"
 	BASE_URL string = "https://api.mexc.com/api/v3"
 )
+
+func Init(apikey string, secret string) {
+	API_KEY = apikey
+	SEC_KEY = secret
+}

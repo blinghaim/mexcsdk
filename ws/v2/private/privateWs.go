@@ -10,11 +10,11 @@ import (
 	"os/signal"
 	"time"
 
-	"demo/config"
+	"github.com/blinghaim/mexcsdk/config"
 	"github.com/gorilla/websocket"
 )
 
-//加密
+// 加密
 func MD5(signStr string) string {
 	data := []byte(signStr)
 	// h := md5.New()
