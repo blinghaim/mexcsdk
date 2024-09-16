@@ -15,7 +15,7 @@ import (
 )
 
 // 公共get请求
-func PublicGet(urlStr string, jsonParams string) interface{} {
+func PublicGet(urlStr string, jsonParams string) *resty.Response {
 	var path string
 	if jsonParams == "" {
 		path = urlStr
@@ -41,7 +41,7 @@ func PublicGet(urlStr string, jsonParams string) interface{} {
 }
 
 // 私有get请求
-func PrivateGet(urlStr string, jsonParams string) interface{} {
+func PrivateGet(urlStr string, jsonParams string) *resty.Response {
 	var path string
 	timestamp := time.Now().UnixNano() / 1e6
 	fmt.Println(timestamp)
@@ -81,7 +81,7 @@ func PrivateGet(urlStr string, jsonParams string) interface{} {
 }
 
 // 私有post请求
-func PrivatePost(urlStr string, jsonParams string) interface{} {
+func PrivatePost(urlStr string, jsonParams string) *resty.Response {
 	var path string
 	timestamp := time.Now().UnixNano() / 1e6
 	fmt.Println(timestamp)
@@ -121,7 +121,7 @@ func PrivatePost(urlStr string, jsonParams string) interface{} {
 }
 
 // 私有delete请求
-func PrivateDelete(urlStr string, jsonParams string) interface{} {
+func PrivateDelete(urlStr string, jsonParams string) *resty.Response {
 	var path string
 	timestamp := time.Now().UnixNano() / 1e6
 	fmt.Println(timestamp)
@@ -161,7 +161,7 @@ func PrivateDelete(urlStr string, jsonParams string) interface{} {
 }
 
 // 私有put请求
-func PrivatePut(urlStr string, jsonParams string) interface{} {
+func PrivatePut(urlStr string, jsonParams string) *resty.Response {
 	var path string
 	timestamp := time.Now().UnixNano() / 1e6
 	fmt.Println(timestamp)
