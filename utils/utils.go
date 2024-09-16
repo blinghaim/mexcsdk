@@ -168,8 +168,14 @@ func PrivatePut(urlStr string, jsonParams string) interface{} {
 	} else {
 		strParams := JsonToParamStr(jsonParams)
 		message := fmt.Sprintf("%s&timestamp=%d", strParams, timestamp)
+		if len(strParams) == 0 {
+			message = fmt.Sprintf("timestamp=%d", timestamp)
+		}
 		sign := ComputeHmac256(message, config.SEC_KEY)
 		path = fmt.Sprintf("%s?%s&timestamp=%d&signature=%s", urlStr, strParams, timestamp, sign)
+		if len(strParams) == 0 {
+			path = fmt.Sprintf("%s?timestamp=%d&signature=%s", urlStr, timestamp, sign)
+		}
 		fmt.Println("message:", ParamsEncode(message))
 		fmt.Println("sign:", sign)
 		fmt.Println("path:", path)
