@@ -33,7 +33,19 @@ func PublicGet(urlStr string, jsonParams string) *resty.Response {
 	resp, err := client.R().Get(path)
 
 	if err != nil {
-		log.Fatal("请求报错：", err)
+		for i := 0; i < 10; i++ {
+			time.Sleep(2 * time.Second)
+			resp, err = client.R().SetHeaders(map[string]string{
+				"X-MEXC-APIKEY": config.API_KEY,
+				"Content-Type":  "application/json",
+			}).Post(path)
+			if err == nil {
+				break
+			}
+		}
+		if err != nil {
+			log.Fatalf("请求报错：%v", err)
+		}
 	}
 
 	// fmt.Println("Response Info:", resp)
@@ -73,7 +85,19 @@ func PrivateGet(urlStr string, jsonParams string) *resty.Response {
 	}).Get(path)
 
 	if err != nil {
-		log.Fatal("请求报错：", err)
+		for i := 0; i < 10; i++ {
+			time.Sleep(2 * time.Second)
+			resp, err = client.R().SetHeaders(map[string]string{
+				"X-MEXC-APIKEY": config.API_KEY,
+				"Content-Type":  "application/json",
+			}).Post(path)
+			if err == nil {
+				break
+			}
+		}
+		if err != nil {
+			log.Fatalf("请求报错：%v", err)
+		}
 	}
 
 	// fmt.Println("Response Info:", resp)
@@ -113,7 +137,19 @@ func PrivatePost(urlStr string, jsonParams string) *resty.Response {
 	}).Post(path)
 
 	if err != nil {
-		log.Fatal("请求报错：", err)
+		for i := 0; i < 10; i++ {
+			time.Sleep(2 * time.Second)
+			resp, err = client.R().SetHeaders(map[string]string{
+				"X-MEXC-APIKEY": config.API_KEY,
+				"Content-Type":  "application/json",
+			}).Post(path)
+			if err == nil {
+				break
+			}
+		}
+		if err != nil {
+			log.Fatalf("请求报错：%v", err)
+		}
 	}
 
 	// fmt.Println("Response Info:", resp)
@@ -153,7 +189,19 @@ func PrivateDelete(urlStr string, jsonParams string) *resty.Response {
 	}).Delete(path)
 
 	if err != nil {
-		log.Fatal("请求报错：", err)
+		for i := 0; i < 10; i++ {
+			time.Sleep(2 * time.Second)
+			resp, err = client.R().SetHeaders(map[string]string{
+				"X-MEXC-APIKEY": config.API_KEY,
+				"Content-Type":  "application/json",
+			}).Post(path)
+			if err == nil {
+				break
+			}
+		}
+		if err != nil {
+			log.Fatalf("请求报错：%v", err)
+		}
 	}
 
 	// fmt.Println("Response Info:", resp)
@@ -199,7 +247,19 @@ func PrivatePut(urlStr string, jsonParams string) *resty.Response {
 	}).Put(path)
 
 	if err != nil {
-		log.Fatal("请求报错：", err)
+		for i := 0; i < 10; i++ {
+			time.Sleep(2 * time.Second)
+			resp, err = client.R().SetHeaders(map[string]string{
+				"X-MEXC-APIKEY": config.API_KEY,
+				"Content-Type":  "application/json",
+			}).Post(path)
+			if err == nil {
+				break
+			}
+		}
+		if err != nil {
+			log.Fatalf("请求报错：%v", err)
+		}
 	}
 
 	// fmt.Println("Response Info:", resp)
